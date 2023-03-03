@@ -14,8 +14,8 @@
     <div id="app">
       <nav class="fixed w-full z-40 top-0">
         <div class="container mx-auto flex justify-between py-10">
-          <h1 class="font-extended font-bold text-5xl">R</h1>
-          <div class="flex gap-10 text-xl font-trans">
+          <h1 class="font-extended font-bold text-5xl pl-8 md:pl-0">R</h1>
+          <div class="gap-10 text-xl font-trans hidden md:flex">
             <span>
               <a href="#cases">Cases</a>
             </span>
@@ -29,11 +29,13 @@
         <div
           class="container mx-auto flex justify-center items-center flex-col h-full gap-10"
         >
-          <h1 class="text-7xl font-extended font-bold text-center">
+          <h1
+            class="text-4xl md:text-5xl lg:text-7xl font-extended font-bold text-center"
+          >
             Reshape your business <br />
             by <span id="typewriter"></span>
           </h1>
-          <p class="text-xl text-center font-trans">
+          <p class="text-md md:text-lg text-center font-trans">
             At our 3D interactive web design studio, we combine our technical
             expertise and creative vision to design visually striking and
             interactive web experiences that are both memorable and impactful.
@@ -41,10 +43,10 @@
         </div>
       </section>
       <section class="">
-        <div class="container mx-auto py-20">
+        <div class="container mx-auto py-20 px-8 md:px-0">
           <div
             id="phrases"
-            class="text-6xl font-trans flex flex-col gap-10 leading-relaxed"
+            class="text-2xl md:text-4xl lg:text-6xl font-trans flex flex-col gap-10 leading-relaxed"
           >
             <p>
               We create unique and interactive 3D web experiences that engage
@@ -73,15 +75,17 @@
         class="min-h-[100vh] flex justify-center items-center"
         id="cases"
       >
-        <div class="container mx-auto">
-          <h1 class="text-8xl font-extended font-bold mt-20">Cases</h1>
+        <div class="container mx-auto px-8 md:px-0">
+          <h1 class="text-5xl md:text-8xl font-extended font-bold mt-20">
+            Cases
+          </h1>
           <swiper-container
             slides-per-view="2"
             space-between="20"
             class="mt-10 cursor-grab"
           >
             <swiper-slide class="flex flex-col">
-              <h2 class="text-3xl font-trans mb-2">Megosu</h2>
+              <h2 class="text-2xl md:text-3xl font-trans mb-2">Megosu</h2>
               <div
                 class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
               >
@@ -95,7 +99,7 @@
               </div>
             </swiper-slide>
             <swiper-slide class="flex flex-col">
-              <h2 class="text-3xl font-trans mb-2">Volume Hair Plus</h2>
+              <h2 class="text-2xl md:text-3xl font-trans mb-2">Volume Hair</h2>
               <div
                 class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
               >
@@ -109,7 +113,7 @@
               </div>
             </swiper-slide>
             <swiper-slide class="flex flex-col">
-              <h2 class="text-3xl font-trans mb-2">Mik Development</h2>
+              <h2 class="text-2xl md:text-3xl font-trans mb-2">MD.</h2>
               <div
                 class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
               >
@@ -131,15 +135,19 @@
         </div>
       </section> -->
       <section
-        class="min-h-[100vh] flex justify-center items-center z-10"
+        class="min-h-[100vh] flex justify-center items-center"
         id="contact"
       >
-        <div class="container mx-auto">
-          <h1 class="text-8xl font-extended font-bold mt-20 mb-10">Contact</h1>
-          <h2 class="text-3xl font-extended mb-10">Let's work together</h2>
+        <div class="container mx-auto px-8 md:px-0">
+          <h1 class="text-5xl md:text-8xl font-extended font-bold mt-20 mb-10">
+            Contact
+          </h1>
+          <h2 class="text-2xl md:text-3xl font-extended mb-10">
+            Let's work together
+          </h2>
           <form
             action=""
-            class="flex flex-col gap-10 font-extended w-1/2 mb-20"
+            class="flex flex-col gap-10 font-extended w-full lg:w-1/2 mb-20"
           >
             <div class="border-b-2">
               <label for="name" class="text-xl pr-5">Name</label>
@@ -198,7 +206,6 @@
     <script type="text/javascript">
       new ScrollyVideo({
         scrollyVideoContainer: "scrolly-video",
-        transitionSpeed: 8,
         src: "https://mik-development.s3.eu-central-1.amazonaws.com/remade-cube-animation.mp4",
       });
     </script>
