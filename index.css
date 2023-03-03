@@ -16,6 +16,5 @@
 }
 
 #phrases p {
-  opacity: 0.2;
-  transition: opacity 300ms ease-in-out;
+  transition: opacity 500ms ease;
 }

@@ -34,9 +34,11 @@ for (let i = 0; i < phrases.length; i++) {
       phrases[i].getBoundingClientRect().top + phrases[i].offsetHeight / 2;
 
     if (middleOfPhrase >= middleOfScreen) {
-      phrases[i].style.opacity = 0.2;
+      phrases[i].style.opacity = 0;
+      phrases[i].style.top = -1 + "rem";
     } else {
       phrases[i].style.opacity = 1;
+      phrases[i].style.top = 0;
     }
   });
 }
