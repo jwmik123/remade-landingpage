@@ -11,7 +11,6 @@
   <body class="bg-black text-white">
     <!-- <canvas class="webgl -z-10"></canvas> -->
     <div id="scrolly-video" class="-z-10 opacity-90"></div>
-
     <div id="app">
       <nav class="fixed w-full z-40 top-0">
         <div class="container mx-auto flex justify-between py-10">
@@ -129,7 +128,7 @@
         </div>
       </section> -->
       <section
-        class="min-h-[50vh] flex justify-center items-center"
+        class="min-h-[50vh] flex justify-center items-center z-10"
         id="contact"
       >
         <div class="container mx-auto">
@@ -192,6 +191,7 @@
     <script type="text/javascript">
       new ScrollyVideo({
         scrollyVideoContainer: "scrolly-video",
+        transitionSpeed: 1,
         src: "https://mik-development.s3.eu-central-1.amazonaws.com/remade-cube-animation.mp4",
       });
     </script>
