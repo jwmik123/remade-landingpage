@@ -29,7 +29,7 @@ const phrases = container.getElementsByTagName("p");
 
 for (let i = 0; i < phrases.length; i++) {
   window.addEventListener("scroll", function () {
-    const middleOfScreen = window.innerHeight / 1.6;
+    const middleOfScreen = window.innerHeight / 1.5;
     const middleOfPhrase =
       phrases[i].getBoundingClientRect().top + phrases[i].offsetHeight / 2;
 
