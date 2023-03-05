@@ -10,12 +10,16 @@
   </head>
   <body class="bg-black text-white">
     <!-- <canvas class="webgl -z-10"></canvas> -->
-    <div id="scrolly-video" class="-z-10 opacity-90"></div>
+    <!-- <div id="scrolly-video" class="-z-10 opacity-90"></div> -->
     <div id="app">
       <nav class="fixed w-full z-40 top-0">
-        <div class="container mx-auto flex justify-between py-10">
-          <h1 class="font-extended font-bold text-5xl pl-8 md:pl-0">R</h1>
-          <div class="gap-10 text-xl font-trans hidden md:flex">
+        <div
+          class="container mx-auto flex justify-between py-4 lg:py-10 backdrop-blur-sm"
+        >
+          <h1 class="font-extended font-bold text-4xl md:text-4xl pl-8 md:pl-0">
+            R
+          </h1>
+          <div class="gap-10 text-xl font-trans hidden md:flex items-center">
             <span>
               <a href="#cases">Cases</a>
             </span>
@@ -25,7 +29,7 @@
         </div>
       </nav>
 
-      <section class="h-[100vh] absolute top-0 w-full">
+      <section class="h-[100vh] top-0 w-full">
         <div
           class="container mx-auto flex justify-center items-center flex-col h-full gap-10"
         >
@@ -75,57 +79,66 @@
         class="min-h-[100vh] flex justify-center items-center"
         id="cases"
       >
+        <!-- MOBILE VIEW -->
         <div class="container mx-auto px-8 md:px-0">
           <h1 class="text-5xl md:text-8xl font-extended font-bold mt-20">
             Cases
           </h1>
           <div class="block md:hidden">
             <div>
-              <h2 class="mt-10 text-2xl md:text-3xl font-trans mb-2">Megosu</h2>
-              <div
-                class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
-              >
-                <div class="bg-slate-900 rounded-md overflow-hidden">
-                  <img
-                    class="object-cover w-full h-full hover:scale-105 transition duration-500"
-                    src="https://mik-development.s3.eu-central-1.amazonaws.com/large_megosu_649e8df1dd.png"
-                    alt=""
-                  />
+              <a target="_blank" href="https://www.megosu.com">
+                <h2 class="mt-10 text-2xl md:text-3xl font-trans mb-2">
+                  Megosu
+                </h2>
+                <div
+                  class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
+                >
+                  <div class="bg-slate-900 rounded-md overflow-hidden">
+                    <img
+                      class="object-cover w-full h-full hover:scale-105 transition duration-500"
+                      src="https://mik-development.s3.eu-central-1.amazonaws.com/large_megosu_649e8df1dd.png"
+                      alt=""
+                    />
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
             <div>
-              <h2 class="mt-10 text-2xl md:text-3xl font-trans mb-2">
-                Volume Hair
-              </h2>
-              <div
-                class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
-              >
-                <div class="bg-slate-900 rounded-md overflow-hidden">
-                  <img
-                    class="object-cover w-full h-full hover:scale-105 transition duration-500"
-                    src="https://mik-development.s3.eu-central-1.amazonaws.com/vhp2.png"
-                    alt=""
-                  />
+              <a target="_blank" href="https://volumehair.nl">
+                <h2 class="mt-10 text-2xl md:text-3xl font-trans mb-2">
+                  Volume Hair
+                </h2>
+                <div
+                  class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
+                >
+                  <div class="bg-slate-900 rounded-md overflow-hidden">
+                    <img
+                      class="object-cover w-full h-full hover:scale-105 transition duration-500"
+                      src="https://mik-development.s3.eu-central-1.amazonaws.com/vhp2.png"
+                      alt=""
+                    />
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
             <div>
-              <h2 class="mt-10 text-2xl md:text-3xl font-trans mb-2">MD.</h2>
-              <div
-                class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
-              >
-                <div class="bg-slate-900 rounded-md overflow-hidden">
-                  <img
-                    class="object-cover w-full h-full hover:scale-105 transition duration-500"
-                    src="https://mik-development.s3.eu-central-1.amazonaws.com/mikdev.png"
-                    alt=""
-                  />
+              <a target="_blank" href="https://mikdevelopment.nl">
+                <h2 class="mt-10 text-2xl md:text-3xl font-trans mb-2">MD.</h2>
+                <div
+                  class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
+                >
+                  <div class="bg-slate-900 rounded-md overflow-hidden">
+                    <img
+                      class="object-cover w-full h-full hover:scale-105 transition duration-500"
+                      src="https://mik-development.s3.eu-central-1.amazonaws.com/mikdev.png"
+                      alt=""
+                    />
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
-
+          <!-- DESKTOP SLIDER -->
           <swiper-container
             slides-per-view="2"
             space-between="20"
@@ -193,11 +206,13 @@
             Let's work together
           </h2>
           <form
-            action=""
-            class="flex flex-col gap-10 font-extended w-full lg:w-1/2 mb-20"
+            id="my-form"
+            action="sendmail.php"
+            method="post"
+            class="flex flex-col gap-10 font-extended w-full lg:w-1/2 mb-20 text-md lg:text-xl"
           >
-            <div class="border-b-2">
-              <label for="name" class="text-xl pr-5">Name</label>
+            <div class="border-b-2 flex">
+              <label for="name" class="pr-5">Name</label>
               <input
                 type="text"
                 name="name"
@@ -206,7 +221,7 @@
               />
             </div>
             <div class="border-b-2 pb-1 flex">
-              <label for="email" class="text-xl pr-5">E-mail</label>
+              <label for="email" class="pr-5">E-mail</label>
               <input
                 type="email"
                 name="email"
@@ -215,9 +230,7 @@
               />
             </div>
             <div class="border-b-2 flex">
-              <label for="message" class="text-xl pr-5 self-start"
-                >Message</label
-              >
+              <label for="message" class="pr-5 self-start">Message</label>
               <textarea
                 name="message"
                 rows="4"
@@ -225,16 +238,23 @@
                 class="bg-transparent focus:outline-none w-4/5"
               ></textarea>
             </div>
-            <div class="border-b-2">
-              <label for="budget" class="text-xl pr-5">Budget</label>
-              <input
+            <div class="border-b-2 flex">
+              <label for="budget" class="pr-5">Budget</label>
+              <select
                 type="number"
                 name="budget"
-                placeholder="(required)"
                 class="bg-transparent focus:outline-none w-4/5"
-              />
+              >
+                <option value="€0 - €2.000">€0 - €2000</option>
+                <option value="€2.000 - €5.000">€2000 - €5000</option>
+                <option value="€5.000 - €10.000">€5000 - €10.000</option>
+                <option value="€10.000 +">€10.000 +</option>
+              </select>
             </div>
-            <button class="self-start bg-white text-black py-2 px-6 font-bold">
+            <button
+              type="submit"
+              class="self-start bg-white text-black py-2 px-6 font-bold"
+            >
               Submit
             </button>
           </form>
