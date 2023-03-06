@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="https://use.typekit.net/qoq8lkl.css" />
-    <title>Vite App</title>
+    <title>ReMaDe Studio</title>
+    <meta
+      name="description"
+      content="Remade studio is a 3D interactive focussed design studio."
+    />
   </head>
   <body class="bg-black text-white">
     <canvas class="webgl -z-10"></canvas>
@@ -145,46 +149,54 @@
             class="mt-10 cursor-grab hidden md:block"
           >
             <swiper-slide class="flex flex-col">
-              <h2 class="text-2xl md:text-3xl font-trans mb-2">Megosu</h2>
-              <div
-                class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
-              >
-                <div class="bg-slate-900 rounded-md overflow-hidden">
-                  <img
-                    class="object-cover w-full h-full hover:scale-105 transition duration-500"
-                    src="https://mik-development.s3.eu-central-1.amazonaws.com/large_megosu_649e8df1dd.png"
-                    alt=""
-                  />
+              <a target="_blank" href="https://www.megosu.com">
+                <h2 class="text-2xl md:text-3xl font-trans mb-2">Megosu</h2>
+                <div
+                  class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
+                >
+                  <div class="bg-slate-900 rounded-md overflow-hidden">
+                    <img
+                      class="object-cover w-full h-full hover:scale-105 transition duration-500"
+                      src="https://mik-development.s3.eu-central-1.amazonaws.com/large_megosu_649e8df1dd.png"
+                      alt=""
+                    />
+                  </div>
                 </div>
-              </div>
+              </a>
             </swiper-slide>
             <swiper-slide class="flex flex-col">
-              <h2 class="text-2xl md:text-3xl font-trans mb-2">Volume Hair</h2>
-              <div
-                class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
-              >
-                <div class="bg-slate-900 rounded-md overflow-hidden">
-                  <img
-                    class="object-cover w-full h-full hover:scale-105 transition duration-500"
-                    src="https://mik-development.s3.eu-central-1.amazonaws.com/vhp2.png"
-                    alt=""
-                  />
+              <a target="_blank" href="https://volumehair.nl">
+                <h2 class="text-2xl md:text-3xl font-trans mb-2">
+                  Volume Hair
+                </h2>
+                <div
+                  class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
+                >
+                  <div class="bg-slate-900 rounded-md overflow-hidden">
+                    <img
+                      class="object-cover w-full h-full hover:scale-105 transition duration-500"
+                      src="https://mik-development.s3.eu-central-1.amazonaws.com/vhp2.png"
+                      alt=""
+                    />
+                  </div>
                 </div>
-              </div>
+              </a>
             </swiper-slide>
             <swiper-slide class="flex flex-col">
-              <h2 class="text-2xl md:text-3xl font-trans mb-2">MD.</h2>
-              <div
-                class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
-              >
-                <div class="bg-slate-900 rounded-md overflow-hidden">
-                  <img
-                    class="object-cover w-full h-full hover:scale-105 transition duration-500"
-                    src="https://mik-development.s3.eu-central-1.amazonaws.com/mikdev.png"
-                    alt=""
-                  />
+              <a target="_blank" href="https://mikdevelopment.nl">
+                <h2 class="text-2xl md:text-3xl font-trans mb-2">MD.</h2>
+                <div
+                  class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
+                >
+                  <div class="bg-slate-900 rounded-md overflow-hidden">
+                    <img
+                      class="object-cover w-full h-full hover:scale-105 transition duration-500"
+                      src="https://mik-development.s3.eu-central-1.amazonaws.com/mikdev.png"
+                      alt=""
+                    />
+                  </div>
                 </div>
-              </div>
+              </a>
             </swiper-slide>
           </swiper-container>
         </div>
@@ -205,58 +217,75 @@
           <h2 class="text-2xl md:text-3xl font-extended mb-10">
             Let's work together
           </h2>
-          <form
-            id="my-form"
-            method="post"
-            class="flex flex-col gap-10 font-extended w-full lg:w-1/2 mb-20 text-md lg:text-xl"
-          >
-            <div class="border-b-2 flex">
-              <label for="name" class="pr-5">Name</label>
-              <input
-                type="text"
-                name="name"
-                placeholder="(required)"
-                class="bg-transparent focus:outline-none w-4/5"
-              />
-            </div>
-            <div class="border-b-2 pb-1 flex">
-              <label for="email" class="pr-5">E-mail</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="(required)"
-                class="bg-transparent focus:outline-none w-4/5"
-              />
-            </div>
-            <div class="border-b-2 flex">
-              <label for="message" class="pr-5 self-start">Message</label>
-              <textarea
-                name="message"
-                rows="4"
-                placeholder="(required)"
-                class="bg-transparent focus:outline-none w-4/5"
-              ></textarea>
-            </div>
-            <div class="border-b-2 flex">
-              <label for="budget" class="pr-5">Budget</label>
-              <select
-                type="number"
-                name="budget"
-                class="bg-transparent focus:outline-none w-4/5"
-              >
-                <option value="€0 - €2.000">€0 - €2000</option>
-                <option value="€2.000 - €5.000">€2000 - €5000</option>
-                <option value="€5.000 - €10.000">€5000 - €10.000</option>
-                <option value="€10.000 +">€10.000 +</option>
-              </select>
-            </div>
-            <button
-              type="submit"
-              class="self-start bg-white text-black py-2 px-6 font-bold"
+          <div class="flex">
+            <form
+              id="my-form"
+              method="post"
+              class="flex flex-col gap-10 font-extended w-full lg:w-1/2 mb-20 text-md lg:text-xl"
             >
-              Submit
-            </button>
-          </form>
+              <div class="border-b-2 flex">
+                <label for="name" class="pr-5">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="(required)"
+                  class="bg-transparent focus:outline-none w-4/5"
+                />
+              </div>
+              <div class="border-b-2 pb-1 flex">
+                <label for="email" class="pr-5">E-mail</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="(required)"
+                  class="bg-transparent focus:outline-none w-4/5"
+                />
+              </div>
+              <div class="border-b-2 flex">
+                <label for="message" class="pr-5 self-start">Message</label>
+                <textarea
+                  name="message"
+                  rows="4"
+                  placeholder="(required)"
+                  class="bg-transparent focus:outline-none w-4/5"
+                ></textarea>
+              </div>
+              <div class="border-b-2 flex">
+                <label for="budget" class="pr-5">Budget</label>
+                <select
+                  type="number"
+                  name="budget"
+                  class="bg-transparent focus:outline-none w-4/5"
+                >
+                  <option value="€0 - €2.000">€0 - €2000</option>
+                  <option value="€2.000 - €5.000">€2000 - €5000</option>
+                  <option value="€5.000 - €10.000">€5000 - €10.000</option>
+                  <option value="€10.000+">€10.000 +</option>
+                </select>
+              </div>
+              <button
+                type="submit"
+                class="self-start bg-white text-black py-2 px-6 font-bold"
+              >
+                Submit
+              </button>
+            </form>
+            <div
+              class="w-1/2 flex flex-col text-left justify-center items-center self-start"
+            >
+              <div class="font-extended text-2xl space-y-10">
+                <div class="flex flex-col gap-4 underline underline-offset-2">
+                  <p>John M. Keynesplein 12-46, <br />1066 EP Amsterdam</p>
+                  <a href="mailto:info@re-made.com">info@re-made.com</a>
+                  <a href="tel:+31623521980">(06 van Faris)</a>
+                </div>
+                <div class="space-x-4">
+                  <a href="" class="underline">Facebook</a>
+                  <a href="" class="underline">Instagram</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
