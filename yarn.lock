@@ -358,6 +358,11 @@ glob-parent@^6.0.2:
   dependencies:
     is-glob "^4.0.3"
 
+gsap@^3.11.4:
+  version "3.11.4"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.11.4.tgz#e6d972d3509a7431b86d81d6fc3bbeb6862e5ff1"
+  integrity sha512-McHhEguHyExMMnjqKA8G+7TvxmlKQGMbjgwAilnFe1e4id7V/tFveRQ2YMZhTYu0oxHGWvbPltdVYQOu3z1SCA==
+
 has@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/has/-/has-1.0.3.tgz#722d7cbfc1f6aa8241f16dd814e011e1f41e8796"
@@ -400,6 +405,11 @@ is-number@^7.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
+
+lil-gui@^0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/lil-gui/-/lil-gui-0.18.0.tgz#929c93d7d8224d7ddfe21d8ee60f13032d60bea6"
+  integrity sha512-9Zt0oW8KDy8mT8QTXTjAEmNT9Je9KLoCWUYiJD5DaB6eHoZ3hQYGt2JRJbCUHcvYgpwgcTHtzS9JFmN37vGyzw==
 
 lilconfig@^2.0.5, lilconfig@^2.0.6:
   version "2.0.6"

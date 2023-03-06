@@ -1,106 +1,119 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
-import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
-import { GammaCorrectionShader } from "three/examples/jsm/shaders/GammaCorrectionShader.js";
-import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
-import { RGBShiftShader } from "three/examples/jsm/shaders/RGBShiftShader.js";
+import * as dat from "lil-gui";
+import gsap from "gsap";
 
+/**
+ * Debug
+ */
+const gui = new dat.GUI();
+
+const parameters = {
+  materialColor: "#ff3d5a",
+};
+
+gui.addColor(parameters, "materialColor").onChange(() => {
+  material.color.set(parameters.materialColor);
+  particlesMaterial.color.set(parameters.materialColor);
+});
+
+/**
+ * Base
+ */
+// Canvas
 const canvas = document.querySelector("canvas.webgl");
 
 // Scene
 const scene = new THREE.Scene();
 
-const fog = new THREE.Fog("black", 1, 2.5);
-scene.fog = fog;
-
-const TEXTURE_PATH =
-  "https://res.cloudinary.com/dg5nsedzw/image/upload/v1641657168/blog/vaporwave-threejs-textures/grid.png";
-const DISPLACEMENT_PATH =
-  "https://res.cloudinary.com/dg5nsedzw/image/upload/v1641657200/blog/vaporwave-threejs-textures/displacement.png";
-const METALNESS_PATH =
-  "https://res.cloudinary.com/dg5nsedzw/image/upload/v1641657200/blog/vaporwave-threejs-textures/metalness.png";
-
-// Textures
+/**
+ * Objects
+ */
+// Texture
 const textureLoader = new THREE.TextureLoader();
-const gridTexture = textureLoader.load(TEXTURE_PATH);
-const displacementMap = textureLoader.load(DISPLACEMENT_PATH);
-const metalnessTexture = textureLoader.load(METALNESS_PATH);
+const gradientTexture = textureLoader.load("./static/textures/5.jpg");
+gradientTexture.magFilter = THREE.NearestFilter;
 
-// Objects
-const geometry = new THREE.PlaneGeometry(1, 2, 24, 24);
-const material = new THREE.MeshStandardMaterial({
-  color: 0xffffff,
-  map: gridTexture,
-  displacementMap: displacementMap,
-  displacementScale: 0.4,
-  metalnessMap: metalnessTexture,
-  metalness: 0.96,
-  roughness: 0.5,
+// Toon material is a light based material
+const material = new THREE.MeshNormalMaterial({
+  color: parameters.materialColor,
+  gradientMap: gradientTexture,
 });
 
-const plane = new THREE.Mesh(geometry, material);
-plane.rotation.set(-Math.PI * 0.5, 0, 0);
+// Distance between the objects
+const objectsDistance = 4;
 
-const plane1 = new THREE.Mesh(geometry, material);
-plane1.rotation.set(-Math.PI * 0.5, 0, 0);
-plane1.position.y = 0.0;
-plane1.position.z = -1.85;
+const mesh1 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.4, 16, 60), material);
+const mesh2 = new THREE.Mesh(new THREE.ConeGeometry(1, 2, 32), material);
+const mesh3 = new THREE.Mesh(
+  new THREE.TorusKnotGeometry(0.8, 0.3, 140, 32),
+  material
+);
 
-scene.add(plane, plane1);
+mesh1.position.y = -objectsDistance * 0;
+mesh2.position.y = -objectsDistance * 2;
+mesh3.position.y = -objectsDistance * 3.3;
 
-const ambientLight = new THREE.AmbientLight("#ffffff", 10);
-scene.add(ambientLight);
-const spotlight = new THREE.SpotLight("#d53c3d", 20, 25, Math.PI * 0.1, 0.25);
-spotlight.position.set(0.5, 0.75, 2.2);
-// Target the spotlight to a specific point to the left of the scene
-spotlight.target.position.x = -0.25;
-spotlight.target.position.y = 0.25;
-spotlight.target.position.z = 0.25;
-scene.add(spotlight);
-scene.add(spotlight.target);
+mesh1.position.x = 2;
+mesh2.position.x = -2;
+mesh3.position.x = 1.5;
 
-// Left Spotlight aiming to the right
-const spotlight2 = new THREE.SpotLight("#d53c3d", 20, 25, Math.PI * 0.1, 0.25);
-spotlight2.position.set(-0.5, 0.75, 2.2);
-// Target the spotlight to a specific point to the right side of the scene
-spotlight2.target.position.x = 0.25;
-spotlight2.target.position.y = 0.25;
-spotlight2.target.position.z = 0.25;
-scene.add(spotlight2);
-scene.add(spotlight2.target);
+scene.add(mesh1, mesh2, mesh3);
 
-// Sizes
+const sectionMeshes = [mesh1, mesh2, mesh3];
+
+/**
+ * Particles
+ */
+// Geometry
+const particleCount = 500;
+const positions = new Float32Array(particleCount * 3);
+
+for (let i = 0; i < particleCount; i++) {
+  positions[i * 3 + 0] = (Math.random() - 0.5) * 10;
+  positions[i * 3 + 1] =
+    objectsDistance * 0.5 -
+    Math.random() * objectsDistance * sectionMeshes.length;
+  positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+}
+
+const particlesGeometry = new THREE.BufferGeometry();
+particlesGeometry.setAttribute(
+  "position",
+  new THREE.BufferAttribute(positions, 3)
+);
+
+// Material
+const particlesMaterial = new THREE.PointsMaterial({
+  color: "#ffffff",
+  sizeAttenuation: true,
+  size: 0.03,
+});
+
+// Points
+const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+scene.add(particles);
+
+/**
+ * Light
+ */
+const directionalLight = new THREE.DirectionalLight("#fff", 1);
+directionalLight.position.set(1, 1, 0);
+scene.add(directionalLight);
+
+/**
+ * Sizes
+ */
 const sizes = {
   width: window.innerWidth,
   height: window.innerHeight,
 };
 
-// Camera
-const camera = new THREE.PerspectiveCamera(
-  75,
-  sizes.width / sizes.height,
-  0.01,
-  20
-);
-
-camera.position.set(0, 0.1, 1);
-
-// Controls
-// const controls = new OrbitControls(camera, canvas);
-// controls.enableDamping = true;
-
-// Renderer
-const renderer = new THREE.WebGLRenderer({
-  canvas: canvas,
-});
-renderer.setSize(sizes.width, sizes.height);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
 window.addEventListener("resize", () => {
+  // Update sizes
   sizes.width = window.innerWidth;
   sizes.height = window.innerHeight;
 
+  // Update camera
   camera.aspect = sizes.width / sizes.height;
   camera.updateProjectionMatrix();
 
@@ -109,28 +122,99 @@ window.addEventListener("resize", () => {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
-const effectComposer = new EffectComposer(renderer);
-effectComposer.setSize(sizes.width, sizes.height);
-effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+/**
+ * Camera
+ */
+// Group
+const cameraGroup = new THREE.Group();
+scene.add(cameraGroup);
 
-const renderPass = new RenderPass(scene, camera);
-effectComposer.addPass(renderPass);
+// Base camera
+const camera = new THREE.PerspectiveCamera(
+  35,
+  sizes.width / sizes.height,
+  0.1,
+  100
+);
+camera.position.z = 6;
+cameraGroup.add(camera);
 
-const rgbShiftPass = new ShaderPass(RGBShiftShader);
-rgbShiftPass.uniforms["amount"].value = 0.0015;
-effectComposer.addPass(rgbShiftPass);
+/**
+ * Renderer
+ */
+const renderer = new THREE.WebGLRenderer({
+  canvas: canvas,
+  alpha: true, // Default is 0 or false
+});
+renderer.setSize(sizes.width, sizes.height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
+/**
+ * Scroll
+ */
+let scrollY = window.scrollY;
+let currentSection = 0;
+
+window.addEventListener("scroll", () => {
+  scrollY = window.scrollY;
+  const newSection = Math.round((scrollY / sizes.height) * 0.7);
+  if (newSection != currentSection) {
+    currentSection = newSection;
+    gsap.to(sectionMeshes[currentSection].rotation, {
+      duration: 2,
+      ease: "power2.inOut",
+      x: "+=6",
+      y: "+=3",
+    });
+  }
+});
+
+/**
+ * Cursor
+ */
+const cursor = {};
+cursor.x = 0;
+cursor.y = 0;
+
+window.addEventListener("mousemove", (event) => {
+  cursor.x = event.clientX / sizes.width - 0.5;
+  cursor.y = event.clientY / sizes.height - 0.5;
+});
+
+/**
+ * Animate
+ */
 const clock = new THREE.Clock();
+let previousTime = 0;
 
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
+  // We have to use the delta time to base it on the FPS of the screen instead of seconds
+  const deltaTime = elapsedTime - previousTime;
+  previousTime = elapsedTime;
 
-  plane.position.z = (elapsedTime * 0.05) % 2;
-  plane1.position.z = ((elapsedTime * 0.05) % 2) - 2;
+  // Animate camera
+  camera.position.y = (-scrollY / sizes.height) * objectsDistance;
 
-  //   controls.update();
+  const parallaxX = cursor.x * 0.5;
+  const parallaxY = -cursor.y * 0.5;
+  cameraGroup.position.x +=
+    (parallaxX - cameraGroup.position.x) * 5 * deltaTime;
+  cameraGroup.position.y +=
+    (parallaxY - cameraGroup.position.y) * 5 * deltaTime;
+
+  // Animate meshes
+  // We add the deltatime to the current rotation in order to make sure we can always rotate
+  // the object from somewhere else
+  for (const mesh of sectionMeshes) {
+    mesh.rotation.x += deltaTime * 0.1;
+    mesh.rotation.y += deltaTime * 0.12;
+  }
+
+  // Render
   renderer.render(scene, camera);
-  effectComposer.render();
+
+  // Call tick again on the next frame
   window.requestAnimationFrame(tick);
 };
 
