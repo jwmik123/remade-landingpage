@@ -2,19 +2,67 @@ import * as THREE from "three";
 import * as dat from "lil-gui";
 import gsap from "gsap";
 
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { BloomPass } from "three/examples/jsm/postprocessing/BloomPass.js";
+import { OutlinePass } from "three/examples/jsm/postprocessing/OutlinePass.js";
+
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+
 /**
  * Debug
  */
 // const gui = new dat.GUI();
 
-const parameters = {
-  materialColor: "#ff3d5a",
-};
+// const parameters = {
+//   materialColor: "#ff3d5a",
+// };
 
 // gui.addColor(parameters, "materialColor").onChange(() => {
 //   material.color.set(parameters.materialColor);
 //   particlesMaterial.color.set(parameters.materialColor);
 // });
+
+/**
+ * Models
+ */
+/**
+ * Models
+ */
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath("./static/draco/");
+
+const gltfLoader = new GLTFLoader();
+gltfLoader.setDRACOLoader(dracoLoader);
+
+let mixer = null;
+
+gltfLoader.load("./static/textures/websiteObject.gltf", (gltf) => {
+  gltf.scene.scale.set(1, 1, 1);
+  scene.add(gltf.scene);
+
+  // Animation
+  mixer = new THREE.AnimationMixer(gltf.scene);
+  const action = mixer.clipAction(gltf.animations[0]);
+
+  window.addEventListener("scroll", () => {
+    // Calculate the scroll progress as a value between 0 and 1
+    const scrollProgress =
+      window.scrollY / (document.body.clientHeight - window.innerHeight);
+    console.log("scroll progress:", scrollProgress);
+    // Set the time position of the animation based on the scroll progress
+    const duration = action.getClip().duration;
+    const time = scrollProgress * duration;
+    action.time = time;
+    console.log(time);
+
+    action.play();
+    // Update the animation mixer
+    mixer.update(0);
+    console.log("updated");
+  });
+});
 
 /**
  * Base
@@ -35,8 +83,8 @@ gradientTexture.magFilter = THREE.NearestFilter;
 
 // Toon material is a light based material
 const material = new THREE.MeshNormalMaterial({
-  color: parameters.materialColor,
-  gradientMap: gradientTexture,
+  // color: parameters.materialColor,
+  // gradientMap: gradientTexture,
 });
 
 // Distance between the objects
@@ -181,6 +229,24 @@ window.addEventListener("mousemove", (event) => {
   cursor.y = event.clientY / sizes.height - 0.5;
 });
 
+// Post Processing
+const renderPass = new RenderPass(scene, camera);
+
+const outlinePass = new OutlinePass(
+  new THREE.Vector2(sizes.width, sizes.height),
+  scene,
+  camera
+);
+outlinePass.edgeStrength = 10; // increase the strength of the outline effect
+outlinePass.edgeGlow = 3; // enable a glow effect on the outline
+outlinePass.visibleEdgeColor.set(0xffffff); // set the color of the outline to white
+outlinePass.renderToScreen = true;
+const bloomPass = new BloomPass(3, 25, 4, 256);
+const composer = new EffectComposer(renderer);
+composer.addPass(renderPass);
+composer.addPass(outlinePass);
+composer.addPass(bloomPass);
+
 /**
  * Animate
  */
@@ -213,6 +279,8 @@ const tick = () => {
 
   // Render
   renderer.render(scene, camera);
+
+  composer.render();
 
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);

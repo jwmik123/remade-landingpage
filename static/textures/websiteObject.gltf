@@ -1,0 +1,173 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.7.33",
+        "version" : "2.0"
+    },
+    "extensionsUsed" : [
+        "KHR_draco_mesh_compression"
+    ],
+    "extensionsRequired" : [
+        "KHR_draco_mesh_compression"
+    ],
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Stone",
+            "rotation" : [
+                0.3126595914363861,
+                -0.1804259717464447,
+                0.2817942500114441,
+                0.8889783024787903
+            ],
+            "scale" : [
+                0.8682770133018494,
+                0.8682770133018494,
+                0.8682770729064941
+            ],
+            "translation" : [
+                0,
+                -0.162991464138031,
+                0
+            ]
+        }
+    ],
+    "animations" : [
+        {
+            "channels" : [
+                {
+                    "sampler" : 0,
+                    "target" : {
+                        "node" : 0,
+                        "path" : "rotation"
+                    }
+                }
+            ],
+            "name" : "rock.001Action",
+            "samplers" : [
+                {
+                    "input" : 3,
+                    "interpolation" : "LINEAR",
+                    "output" : 4
+                }
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "Material.001",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.033460572361946106,
+                    0.1597890853881836,
+                    0.8000000715255737,
+                    1
+                ],
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "rock.001",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1
+                    },
+                    "extensions" : {
+                        "KHR_draco_mesh_compression" : {
+                            "bufferView" : 0,
+                            "attributes" : {
+                                "POSITION" : 0,
+                                "NORMAL" : 1
+                            }
+                        }
+                    },
+                    "indices" : 2,
+                    "material" : 0,
+                    "mode" : 4
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "componentType" : 5126,
+            "count" : 140,
+            "max" : [
+                0.6074122786521912,
+                0.8545181751251221,
+                0.988090991973877
+            ],
+            "min" : [
+                -0.6867708563804626,
+                -0.8821201324462891,
+                -0.8842248320579529
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 140,
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5123,
+            "count" : 528,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 60,
+            "max" : [
+                2.5
+            ],
+            "min" : [
+                0.041666666666666664
+            ],
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 60,
+            "type" : "VEC4"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 1152,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 240,
+            "byteOffset" : 1152
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 960,
+            "byteOffset" : 1392
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 2352,
+            "uri" : "data:application/octet-stream;base64,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"
+        }
+    ]
+}
