@@ -2,12 +2,11 @@ import Lenis from "@studio-freight/lenis";
 // import ScrollyVideo from "scrolly-video";
 import { register } from "swiper/element/bundle";
 import Typewriter from "typewriter-effect/dist/core";
+import sgMail from "@sendgrid/mail";
 
 import gsap from "gsap";
 
 register();
-
-// gsap.registerPlugin(ScrollTrigger);
 
 const lenis = new Lenis({
   duration: 1.1,
@@ -71,12 +70,12 @@ const border = document.querySelector(".border-t");
 // Set the initial position of the border element
 gsap.set(border, { width: 0 });
 gsap.set("nav", { yPercent: -70 });
-gsap.set(".title", { xPercent: 100 });
+// gsap.set(".title", { xPercent: 100 });
 // Add the animation to the timeline
 gsap.to(border, {
   scrollTrigger: ".header",
   width: "100%",
-  delay: 1,
+  delay: 0,
   duration: 2,
   ease: "power2.out",
 });
@@ -90,7 +89,7 @@ gsap.to("nav", {
 
 gsap.to(".small-text", {
   scrollTrigger: ".header",
-  opacity: 1,
+  opacity: 2,
   delay: 1.5,
   duration: 3,
   ease: "power2.out",
@@ -98,9 +97,8 @@ gsap.to(".small-text", {
 
 gsap.to(".title", {
   scrollTrigger: ".header",
-  xPercent: 0,
+  // xPercent: 0,
   opacity: 1,
   delay: 1,
-  duration: 2,
-  ease: "power2.out",
+  duration: 3,
 });
