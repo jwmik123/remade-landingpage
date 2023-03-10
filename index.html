@@ -12,16 +12,18 @@
       content="Remade studio is a 3D interactive focussed design studio."
     />
   </head>
-  <body class="bg-black text-white">
+  <body class="text-white">
     <canvas class="webgl -z-10"></canvas>
     <!-- <div id="scrolly-video" class="-z-10 opacity-90"></div> -->
     <div id="app">
       <nav class="fixed w-full z-40 top-0">
         <div
-          class="container mx-auto flex justify-between py-4 lg:py-10 backdrop-blur-sm"
+          class="container mx-auto flex justify-between py-4 lg:py-5 backdrop-blur-sm"
         >
-          <h1 class="font-extended font-bold text-4xl md:text-4xl pl-8 md:pl-0">
-            R
+          <h1
+            class="font-extended font-bold uppercase text-2xl md:text-3xl pl-8 md:pl-0"
+          >
+            Remade
           </h1>
           <div class="gap-10 text-xl font-trans hidden md:flex items-center">
             <span>
@@ -35,27 +37,40 @@
 
       <section class="h-[100vh] top-0 w-full">
         <div
-          class="container mx-auto flex justify-center items-center flex-col h-full gap-10"
+          class="header overflow-hidden container mx-auto flex flex-col lg:flex-row justify-center items-center h-full"
         >
+          <div class="w-1/3 pt-5">
+            <div
+              class="border-t border-white before:absolute before:inset-x-0 before:-top-2 content:''"
+            ></div>
+            <p
+              class="hidden small-text lg:block text-lg text-center pt-5 font-trans"
+            >
+              We help to create visually striking and interactive web
+              experiences that are both memorable and impactful.
+            </p>
+          </div>
+
           <h1
-            class="text-4xl md:text-5xl lg:text-7xl font-extended font-bold text-center"
+            class="title text-4xl md:text-6xl lg:text-8xl text-center lg:text-right font-trans font-medium uppercase lg:w-2/3 w-full mix-blend-difference"
           >
-            Reshape your business <br />
-            by <span class="text-orange-400" id="typewriter"></span>
+            Reshape your <br />
+            business by<br />
+            <span id="typewriter"></span>
           </h1>
-          <p class="text-md md:text-lg text-center font-trans">
-            At our 3D interactive web design studio, we combine our technical
-            expertise and creative vision to design visually striking and
-            interactive web experiences that are both memorable and impactful.
+          <p class="block lg:hidden text-lg text-center font-trans w-full pt-5">
+            We help to create visually striking and interactive web experiences
+            that are both memorable and impactful.
           </p>
         </div>
-        <div class="absolute bottom-24 left-[48.1%] animate-bounce">
+
+        <div class="absolute bottom-5 w-full flex justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="72"
-            height="72"
+            width="40"
+            height="40"
             fill="currentColor"
-            class="bi bi-chevron-down"
+            class="bi bi-chevron-down relative border-2 p-2"
             viewBox="0 0 16 16"
           >
             <path
@@ -69,7 +84,7 @@
         <div class="container mx-auto py-20 px-8 md:px-0">
           <div
             id="phrases"
-            class="text-2xl md:text-4xl lg:text-6xl font-extended flex flex-col gap-10 leading-relaxed"
+            class="text-2xl md:text-5xl w-1/2 mx-auto font-trans flex flex-col gap-10 leading-relaxed"
           >
             <p>
               We create unique and interactive 3D web experiences that engage
@@ -79,16 +94,6 @@
               We believe in pushing the boundaries of traditional web design by
               integrating technology such as 3D modeling, animation, and
               interactive features to enhance your user experience.
-            </p>
-            <p>
-              Whether you're looking for a storytelling website, a 3D
-              configurator, or anything in between, we have the expertise and
-              creativity to make it happen.
-            </p>
-            <p>
-              So if you're ready to elevate your online presence with an
-              interactive 3D web experience that will set you apart from the
-              competition, get in touch with us today.
             </p>
             <p>We can't wait to bring your ideas to life!</p>
           </div>
@@ -272,10 +277,11 @@
                   name="budget"
                   class="bg-transparent focus:outline-none w-4/5"
                 >
-                  <option value="€0 - €2.000">€0 - €2000</option>
-                  <option value="€2.000 - €5.000">€2000 - €5000</option>
+                  <option value="€0 - €2.000">€1000 - €2500</option>
+                  <option value="€2.000 - €5.000">€2500 - €5000</option>
                   <option value="€5.000 - €10.000">€5000 - €10.000</option>
-                  <option value="€10.000+">€10.000 +</option>
+                  <option value="€10.000 - €20.000">€10.000 - €20.000</option>
+                  <option value="€20.000+">€20.000+</option>
                 </select>
               </div>
               <button

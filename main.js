@@ -3,7 +3,11 @@ import Lenis from "@studio-freight/lenis";
 import { register } from "swiper/element/bundle";
 import Typewriter from "typewriter-effect/dist/core";
 
+import gsap from "gsap";
+
 register();
+
+// gsap.registerPlugin(ScrollTrigger);
 
 const lenis = new Lenis({
   duration: 1.1,
@@ -53,9 +57,6 @@ typewriter
   .typeString("Remaking")
   .pauseFor(1500)
   .deleteChars(8)
-  .typeString("Redesigning")
-  .pauseFor(1500)
-  .deleteChars(11)
   .typeString("Reviving")
   .pauseFor(1500)
   .deleteChars(8)
@@ -63,3 +64,43 @@ typewriter
   .pauseFor(3500)
   .deleteChars(6)
   .start();
+
+// Select the border element using its class
+const border = document.querySelector(".border-t");
+
+// Set the initial position of the border element
+gsap.set(border, { width: 0 });
+gsap.set("nav", { yPercent: -70 });
+gsap.set(".title", { xPercent: 100 });
+// Add the animation to the timeline
+gsap.to(border, {
+  scrollTrigger: ".header",
+  width: "100%",
+  delay: 1,
+  duration: 2,
+  ease: "power2.out",
+});
+
+gsap.to("nav", {
+  scrollTrigger: ".header",
+  delay: 2,
+  yPercent: 0,
+  duration: 1,
+});
+
+gsap.to(".small-text", {
+  scrollTrigger: ".header",
+  opacity: 1,
+  delay: 1.5,
+  duration: 3,
+  ease: "power2.out",
+});
+
+gsap.to(".title", {
+  scrollTrigger: ".header",
+  xPercent: 0,
+  opacity: 1,
+  delay: 1,
+  duration: 2,
+  ease: "power2.out",
+});

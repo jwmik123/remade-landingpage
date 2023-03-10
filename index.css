@@ -17,5 +17,12 @@
 
 #phrases p {
   opacity: 0;
-  transition: opacity 600ms ease-in-out;
+  transition: opacity 800ms ease-in-out;
+}
+.small-text {
+  opacity: 0;
+}
+
+.title {
+  opacity: 0;
 }

@@ -71,8 +71,7 @@ const texture = new THREE.TextureLoader().load("./textures/5.jpg");
 texture.needsUpdate = true;
 const diamondMaterial = new THREE.ShaderMaterial({
   uniforms: {
-    uTexture: { value: texture },
-    uRefractionRatio: { value: 0.9 },
+    uTime: { value: 0 },
   },
   vertexShader: diamondVertexShader,
   fragmentShader: diamondFragmentShader,
@@ -88,6 +87,7 @@ let mixer = null;
 
 gltfLoader.load("./websiteTestObject3.gltf", (gltf) => {
   gltf.scene.scale.set(1, 1, 1);
+  gltf.scene.position.x = 0;
 
   gltf.scene.traverse((model) => {
     if (model.isMesh) {
@@ -151,13 +151,13 @@ directionalLight.shadow.camera.bottom = -7;
 directionalLight.position.set(-5, 5, 0);
 scene.add(directionalLight);
 
-const spotLight = new THREE.SpotLight(0xfffffff, 1);
+const spotLight = new THREE.SpotLight(0xff00000, 1);
 spotLight.position.y = 1;
 spotLight.position.x = 1;
 spotLight.lookAt(0, 0, 0);
 scene.add(spotLight);
-const spotLightHelper = new THREE.SpotLightHelper(spotLight);
-scene.add(spotLightHelper);
+// const spotLightHelper = new THREE.SpotLightHelper(spotLight);
+// scene.add(spotLightHelper);
 
 /**
  * Sizes
@@ -229,6 +229,8 @@ const tick = () => {
 
   // Update particles material
   particlesMaterial.uniforms.uTime.value = elapsedTime;
+
+  diamondMaterial.uniforms.uTime.value = elapsedTime;
 
   // Render
   renderer.render(scene, camera);
