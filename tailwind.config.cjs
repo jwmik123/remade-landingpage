@@ -7,6 +7,9 @@ module.exports = {
       trans: ["transducer", "sans-serif"],
       extended: ["transducer-extended", "sans-serif"],
     },
+    container: {
+      center: true,
+    },
     extend: {},
   },
   plugins: [],

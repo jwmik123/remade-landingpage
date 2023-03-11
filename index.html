@@ -44,7 +44,7 @@
               class="hidden lg:block border-t border-white before:absolute before:inset-x-0 before:-top-2 content:''"
             ></div>
             <p
-              class="hidden small-text lg:block text-lg text-center pt-5 font-trans"
+              class="hidden small-text lg:block text-lg text-left pt-5 font-trans"
             >
               We help to create visually striking and interactive web
               experiences that are both memorable and impactful.
@@ -67,39 +67,25 @@
             that are both memorable and impactful.
           </p>
         </div>
-
-        <div class="absolute bottom-5 w-full flex justify-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="40"
-            height="40"
-            fill="currentColor"
-            class="bi bi-chevron-down relative border-2 p-2"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-            />
-          </svg>
-        </div>
       </section>
-      <section class="">
-        <div class="container mx-auto py-20 px-8 md:px-0">
+      <section class="min-h-full">
+        <div
+          class="container mx-auto pb-40 px-8 md:px-0 flex justify-center items-center"
+        >
           <div
             id="phrases"
-            class="text-2xl md:text-5xl w-1/2 mx-auto font-trans flex flex-col gap-10 leading-relaxed"
+            class="text-2xl md:text-6xl mx-auto font-trans flex flex-col gap-10 leading-relaxed"
           >
-            <p>
+            <!-- <p>
               We create unique and interactive 3D web experiences that engage
               and impress your audience.
-            </p>
-            <p>
+            </p> -->
+            <p class="text-center">
               We believe in pushing the boundaries of traditional web design by
               integrating technology such as 3D modeling, animation, and
               interactive features to enhance your user experience.
             </p>
-            <p>We can't wait to bring your ideas to life!</p>
+            <!-- <p>We can't wait to bring your ideas to life!</p> -->
           </div>
         </div>
       </section>
@@ -112,122 +98,74 @@
           <h1 class="text-5xl md:text-8xl font-extended font-bold mt-20">
             Cases
           </h1>
-          <div class="block md:hidden">
+          <div class="grid grid-cols-2 gap-10">
+            <div class="mt-20">
+              <a target="_blank" href="https://volumehair.nl">
+                <div class="bg-slate-900 rounded-md overflow-hidden">
+                  <img
+                    class="object-cover w-full h-full hover:scale-105 transition duration-500"
+                    src="https://mik-development.s3.eu-central-1.amazonaws.com/vhp2.png"
+                    alt=""
+                  />
+                </div>
+                <h2 class="text-2xl md:text-3xl text-center font-trans my-2">
+                  Volume Hair Plus
+                </h2>
+              </a>
+            </div>
+            <div class="mt-20">
+              <a target="_blank" href="https://mikdevelopment.nl">
+                <div class="bg-slate-900 rounded-md overflow-hidden">
+                  <img
+                    class="object-cover w-full h-full hover:scale-105 transition duration-500"
+                    src="https://mik-development.s3.eu-central-1.amazonaws.com/mikdev.png"
+                    alt=""
+                  />
+                </div>
+                <h2 class="text-2xl md:text-3xl text-center font-trans my-2">
+                  Mik Development.
+                </h2>
+              </a>
+            </div>
             <div>
               <a target="_blank" href="https://www.megosu.com">
                 <h2 class="mt-10 text-2xl md:text-3xl font-trans mb-2">
                   Megosu
                 </h2>
-                <div
-                  class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
-                >
-                  <div class="bg-slate-900 rounded-md overflow-hidden">
-                    <img
-                      class="object-cover w-full h-full hover:scale-105 transition duration-500"
-                      src="https://mik-development.s3.eu-central-1.amazonaws.com/large_megosu_649e8df1dd.png"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div>
-              <a target="_blank" href="https://volumehair.nl">
-                <h2 class="mt-10 text-2xl md:text-3xl font-trans mb-2">
-                  Volume Hair
-                </h2>
-                <div
-                  class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
-                >
-                  <div class="bg-slate-900 rounded-md overflow-hidden">
-                    <img
-                      class="object-cover w-full h-full hover:scale-105 transition duration-500"
-                      src="https://mik-development.s3.eu-central-1.amazonaws.com/vhp2.png"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div>
-              <a target="_blank" href="https://mikdevelopment.nl">
-                <h2 class="mt-10 text-2xl md:text-3xl font-trans mb-2">MD.</h2>
-                <div
-                  class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
-                >
-                  <div class="bg-slate-900 rounded-md overflow-hidden">
-                    <img
-                      class="object-cover w-full h-full hover:scale-105 transition duration-500"
-                      src="https://mik-development.s3.eu-central-1.amazonaws.com/mikdev.png"
-                      alt=""
-                    />
-                  </div>
+
+                <div class="bg-slate-900 rounded-md overflow-hidden">
+                  <img
+                    class="object-cover w-full h-full hover:scale-105 transition duration-500"
+                    src="https://mik-development.s3.eu-central-1.amazonaws.com/large_megosu_649e8df1dd.png"
+                    alt=""
+                  />
                 </div>
               </a>
             </div>
           </div>
-          <!-- DESKTOP SLIDER -->
-          <swiper-container
-            slides-per-view="2"
-            space-between="20"
-            class="mt-10 cursor-grab hidden md:block"
-          >
-            <swiper-slide class="flex flex-col">
-              <a target="_blank" href="https://www.megosu.com">
-                <h2 class="text-2xl md:text-3xl font-trans mb-2">Megosu</h2>
-                <div
-                  class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
-                >
-                  <div class="bg-slate-900 rounded-md overflow-hidden">
-                    <img
-                      class="object-cover w-full h-full hover:scale-105 transition duration-500"
-                      src="https://mik-development.s3.eu-central-1.amazonaws.com/large_megosu_649e8df1dd.png"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </a>
-            </swiper-slide>
-            <swiper-slide class="flex flex-col">
-              <a target="_blank" href="https://volumehair.nl">
-                <h2 class="text-2xl md:text-3xl font-trans mb-2">
-                  Volume Hair
-                </h2>
-                <div
-                  class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
-                >
-                  <div class="bg-slate-900 rounded-md overflow-hidden">
-                    <img
-                      class="object-cover w-full h-full hover:scale-105 transition duration-500"
-                      src="https://mik-development.s3.eu-central-1.amazonaws.com/vhp2.png"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </a>
-            </swiper-slide>
-            <swiper-slide class="flex flex-col">
-              <a target="_blank" href="https://mikdevelopment.nl">
-                <h2 class="text-2xl md:text-3xl font-trans mb-2">MD.</h2>
-                <div
-                  class="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 aspect-video rounded-md transition duration-400"
-                >
-                  <div class="bg-slate-900 rounded-md overflow-hidden">
-                    <img
-                      class="object-cover w-full h-full hover:scale-105 transition duration-500"
-                      src="https://mik-development.s3.eu-central-1.amazonaws.com/mikdev.png"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </a>
-            </swiper-slide>
-          </swiper-container>
         </div>
       </section>
-      <section class="" id="services">
+      <section class="min-h-[80vh]" id="services">
         <div class="container mx-auto">
           <h1 class="text-8xl font-extended font-bold mt-20">Services</h1>
+          <div class="flex justify-center items-center">
+            <div class="w-1/2">
+              <ul class="text-2xl md:text-4xl lg:text-6xl font-trans space-y-5">
+                <li>Marketing</li>
+                <li>Branding</li>
+                <li>Web Development</li>
+                <li>3D Configurations</li>
+              </ul>
+            </div>
+            <div class="w-1/2">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Corrupti reprehenderit optio numquam vitae aliquid vero
+                molestiae recusandae nemo sint distinctio? Dolore alias ipsam
+                expedita aperiam, voluptatum pariatur ut a aspernatur.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
       <section
@@ -281,7 +219,7 @@
                   name="budget"
                   class="bg-transparent focus:outline-none w-4/5"
                 >
-                  <option value="€0 - €2.000">€1000 - €2500</option>
+                  <option value="€0 - €2.000">€1000 - €2000</option>
                   <option value="€2.000 - €5.000">€2500 - €5000</option>
                   <option value="€5.000 - €10.000">€5000 - €10.000</option>
                   <option value="€10.000 - €20.000">€10.000 - €20.000</option>
@@ -314,10 +252,17 @@
         </div>
       </section>
     </div>
-    <footer
-      class="w-full py-2 bg-white text-black font-trans flex justify-center items-center"
-    >
-      &copy;ReMaDe Studio - 2023
+    <footer class="bg-gradient-to-b from-transparent to-black">
+      <div
+        class="container from-pink-600 via-sky-500 to-pink-600 bg-gradient-to-r bg-clip-text text-transparent w-full flex justify-center items-center"
+      >
+        <h1 class="font-extended font-bold text-[15rem]">REMADE</h1>
+      </div>
+      <div
+        class="container w-full py-2 text-gray-700 text-sm font-trans flex justify-between items-center"
+      >
+        <span>Remade Studio. All Rights Reserved.</span><span>&copy;2023</span>
+      </div>
     </footer>
     <script type="module" src="/main.js"></script>
     <script type="module" src="/newScript.js"></script>
