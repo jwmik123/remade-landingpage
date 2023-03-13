@@ -14,11 +14,10 @@
   </head>
   <body class="text-white">
     <canvas class="webgl -z-10"></canvas>
-    <!-- <div id="scrolly-video" class="-z-10 opacity-90"></div> -->
     <div id="app">
       <nav class="fixed w-full z-40 top-0">
         <div
-          class="container mx-auto flex justify-between py-4 lg:py-5 backdrop-blur-sm"
+          class="container px-[3vw] mx-auto flex justify-between py-4 lg:py-5 backdrop-blur-sm"
         >
           <h1
             class="font-extended font-bold uppercase text-2xl md:text-3xl pl-8 md:pl-0"
@@ -37,7 +36,7 @@
 
       <section class="h-[100vh] top-0 w-full">
         <div
-          class="header overflow-hidden container mx-auto flex flex-col lg:flex-row justify-center items-center h-full"
+          class="header overflow-hidden container px-[3vw] mx-auto flex flex-col lg:flex-row justify-center items-center h-full"
         >
           <div class="w-1/3 pt-5">
             <div
@@ -54,8 +53,7 @@
           <h1
             class="title text-4xl md:text-6xl lg:text-8xl text-center lg:text-right font-trans font-medium uppercase lg:w-2/3 w-full mix-blend-difference"
           >
-            Reshape your <br />
-            business by<br />
+            Reshape your business by<br />
             <div
               class="from-violet-100 via-sky-500 to-pink-600 bg-gradient-to-r bg-clip-text text-transparent"
             >
@@ -70,22 +68,61 @@
       </section>
       <section class="min-h-full">
         <div
-          class="container mx-auto pb-40 px-8 md:px-0 flex justify-center items-center"
+          class="container px-[3vw] mx-auto pb-40 flex justify-center items-center"
         >
           <div
-            id="phrases"
             class="text-2xl md:text-6xl mx-auto font-trans flex flex-col gap-10 leading-relaxed"
           >
-            <!-- <p>
-              We create unique and interactive 3D web experiences that engage
-              and impress your audience.
-            </p> -->
-            <p class="text-center">
+            <p class="text-center mix-blend-difference phrases opacity-0">
               We believe in pushing the boundaries of traditional web design by
               integrating technology such as 3D modeling, animation, and
               interactive features to enhance your user experience.
             </p>
-            <!-- <p>We can't wait to bring your ideas to life!</p> -->
+          </div>
+        </div>
+      </section>
+      <section
+        class="flex justify-center items-center bg-slate-200 py-20 text-black rounded-3xl"
+        id="services"
+      >
+        <div class="container px-[3vw] mx-auto">
+          <h1 class="text-5xl md:text-8xl font-extended font-bold mb-20">
+            Services
+          </h1>
+          <div class="flex justify-center items-center">
+            <div class="w-1/2 flex flex-col justify-center">
+              <ul
+                class="text-2xl flex flex-col font-trans divide-y-2 divide-slate-300"
+              >
+                <li class="py-5 px-5 rounded-md cursor-pointer active">
+                  Marketing
+                </li>
+                <li class="py-5 px-5 rounded-md cursor-pointer">Branding</li>
+                <li class="py-5 px-5 rounded-md cursor-pointer">
+                  Web Development
+                </li>
+                <li class="py-5 px-5 rounded-md cursor-pointer">
+                  3D Configurations
+                </li>
+              </ul>
+            </div>
+            <div
+              class="w-1/2 px-20 text-xl self-start font-trans flex justify-center items-center flex-col"
+            >
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Corrupti reprehenderit optio numquam vitae aliquid vero
+                molestiae recusandae nemo sint distinctio? Dolore alias ipsam
+                expedita aperiam, voluptatum pariatur ut a aspernatur.
+              </p>
+              <br />
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Corrupti reprehenderit optio numquam vitae aliquid vero
+                molestiae recusandae nemo sint distinctio? Dolore alias ipsam
+                expedita aperiam, voluptatum pariatur ut a aspernatur.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -94,11 +131,11 @@
         id="cases"
       >
         <!-- MOBILE VIEW -->
-        <div class="container mx-auto px-8 md:px-0">
+        <div class="container px-[3vw] mx-auto">
           <h1 class="text-5xl md:text-8xl font-extended font-bold mt-20">
             Cases
           </h1>
-          <div class="grid grid-cols-2 gap-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div class="mt-20">
               <a target="_blank" href="https://volumehair.nl">
                 <div class="bg-slate-900 rounded-md overflow-hidden">
@@ -127,12 +164,8 @@
                 </h2>
               </a>
             </div>
-            <div>
-              <a target="_blank" href="https://www.megosu.com">
-                <h2 class="mt-10 text-2xl md:text-3xl font-trans mb-2">
-                  Megosu
-                </h2>
-
+            <div class="mt-20">
+              <a target="_blank" href="https://volumehair.nl">
                 <div class="bg-slate-900 rounded-md overflow-hidden">
                   <img
                     class="object-cover w-full h-full hover:scale-105 transition duration-500"
@@ -140,45 +173,38 @@
                     alt=""
                   />
                 </div>
+                <h2 class="text-2xl md:text-3xl text-center font-trans my-2">
+                  Megosu
+                </h2>
+              </a>
+            </div>
+            <div class="mt-20">
+              <a target="_blank" href="https://hublogiq.com/">
+                <div class="bg-slate-900 rounded-md overflow-hidden">
+                  <img
+                    class="object-cover w-full h-full hover:scale-105 transition duration-500"
+                    src="https://mik-development.s3.eu-central-1.amazonaws.com/hublogiq.png"
+                    alt=""
+                  />
+                </div>
+                <h2 class="text-2xl md:text-3xl text-center font-trans my-2">
+                  HubLogiQ
+                </h2>
               </a>
             </div>
           </div>
         </div>
       </section>
-      <section class="min-h-[80vh]" id="services">
-        <div class="container mx-auto">
-          <h1 class="text-8xl font-extended font-bold mt-20">Services</h1>
-          <div class="flex justify-center items-center">
-            <div class="w-1/2">
-              <ul class="text-2xl md:text-4xl lg:text-6xl font-trans space-y-5">
-                <li>Marketing</li>
-                <li>Branding</li>
-                <li>Web Development</li>
-                <li>3D Configurations</li>
-              </ul>
-            </div>
-            <div class="w-1/2">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Corrupti reprehenderit optio numquam vitae aliquid vero
-                molestiae recusandae nemo sint distinctio? Dolore alias ipsam
-                expedita aperiam, voluptatum pariatur ut a aspernatur.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+
       <section
         class="min-h-[100vh] flex justify-center items-center"
         id="contact"
       >
-        <div class="container mx-auto px-8 md:px-0">
-          <h1 class="text-5xl md:text-8xl font-extended font-bold mt-20 mb-10">
-            Contact
+        <div class="container px-[3vw] mx-auto">
+          <h1 class="text-5xl md:text-8xl font-extended font-bold mt-20 mb-20">
+            Let's connect
           </h1>
-          <h2 class="text-2xl md:text-3xl font-extended mb-10">
-            Let's work together
-          </h2>
+          <h2 class="text-2xl md:text-3xl font-extended mb-10"></h2>
           <div class="flex flex-col lg:flex-row">
             <form
               id="my-form"
@@ -226,19 +252,25 @@
                   <option value="€20.000+">€20.000+</option>
                 </select>
               </div>
-              <button
-                type="submit"
-                class="self-start bg-white text-black py-2 px-6 font-bold"
-              >
-                Submit
-              </button>
+              <div class="flex justify-between items-center">
+                <button
+                  type="submit"
+                  class="self-start bg-white text-black py-2 px-8 font-bold rounded-md"
+                >
+                  Submit
+                </button>
+                <span class="text-orange-500">2/3 spots available</span>
+              </div>
             </form>
             <div
               class="w-full lg:w-1/2 flex flex-col text-left justify-center items-left lg:items-center self-start mb-10 lg:mb-0"
             >
-              <div class="font-extended text-lg lg:text-2xl space-y-10">
+              <div class="font-extended text-lg lg:text-xl space-y-10">
                 <div class="flex flex-col gap-4 underline underline-offset-2">
-                  <p>John M. Keynesplein 12-46, <br />1066 EP Amsterdam</p>
+                  <p>
+                    John M. Keynesplein 12-46, <br />
+                    1066 EP Amsterdam
+                  </p>
                   <a href="mailto:info@re-made.com">info@re-made.com</a>
                   <a href="tel:+31 6 26877251">+31 6 26877251</a>
                 </div>
@@ -254,12 +286,12 @@
     </div>
     <footer class="bg-gradient-to-b from-transparent to-black">
       <div
-        class="container from-pink-600 via-sky-500 to-pink-600 bg-gradient-to-r bg-clip-text text-transparent w-full flex justify-center items-center"
+        class="container px-[3vw] from-pink-600 via-sky-500 to-pink-600 bg-gradient-to-r bg-clip-text text-transparent w-full flex justify-center items-center overflow-hidden"
       >
-        <h1 class="font-extended font-bold text-[15rem]">REMADE</h1>
+        <h1 class="font-extended font-bold big-footer-text">REMADE</h1>
       </div>
       <div
-        class="container w-full py-2 text-gray-700 text-sm font-trans flex justify-between items-center"
+        class="container px-[3vw] w-full py-2 text-gray-600 text-sm font-trans flex justify-between items-center"
       >
         <span>Remade Studio. All Rights Reserved.</span><span>&copy;2023</span>
       </div>

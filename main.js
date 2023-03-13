@@ -20,24 +20,24 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-const container = document.getElementById("phrases");
-const phrases = container.getElementsByTagName("p");
+// const container = document.getElementById("phrases");
+// const phrases = container.getElementsByTagName("p");
 
-for (let i = 0; i < phrases.length; i++) {
-  window.addEventListener("scroll", function () {
-    const middleOfScreen = window.innerHeight / 1.2;
-    const middleOfPhrase =
-      phrases[i].getBoundingClientRect().top + phrases[i].offsetHeight / 2;
+// for (let i = 0; i < phrases.length; i++) {
+//   window.addEventListener("scroll", function () {
+//     const middleOfScreen = window.innerHeight / 1.2;
+//     const middleOfPhrase =
+//       phrases[i].getBoundingClientRect().top + phrases[i].offsetHeight / 2;
 
-    if (middleOfPhrase >= middleOfScreen) {
-      phrases[i].style.opacity = 0;
-      phrases[i].style.top = -1 + "rem";
-    } else {
-      phrases[i].style.opacity = 1;
-      phrases[i].style.top = 0;
-    }
-  });
-}
+//     if (middleOfPhrase >= middleOfScreen) {
+//       phrases[i].style.opacity = 0;
+//       phrases[i].style.top = -1 + "rem";
+//     } else {
+//       phrases[i].style.opacity = 1;
+//       phrases[i].style.top = 0;
+//     }
+//   });
+// }
 
 const typewriterID = document.getElementById("typewriter");
 const typewriter = new Typewriter(typewriterID, {
@@ -59,43 +59,39 @@ typewriter
   .deleteChars(6)
   .start();
 
-// Select the border element using its class
+const tl = gsap.timeline();
 const border = document.querySelector(".border-t");
 
-// Set the initial position of the border element
 gsap.set(border, { width: 0 });
 gsap.set("nav", { yPercent: -70 });
-// gsap.set(".title", { xPercent: 100 });
-// Add the animation to the timeline
-gsap.to(border, {
+
+tl.to(border, {
   scrollTrigger: ".header",
   width: "100%",
-  delay: 0,
-  duration: 2,
+  duration: 1.5,
   ease: "power2.out",
 });
-
-gsap.to("nav", {
+tl.to(".title", {
   scrollTrigger: ".header",
-  delay: 2,
+  opacity: 1,
+  duration: 1,
+});
+
+tl.to(".small-text", {
+  scrollTrigger: ".header",
+  opacity: 1,
+  duration: 1,
+});
+
+tl.to("nav", {
+  scrollTrigger: ".header",
+  // delay: 2,
   yPercent: 0,
   duration: 1,
 });
 
-//Jall legend
-
-gsap.to(".small-text", {
-  scrollTrigger: ".header",
-  opacity: 2,
-  delay: 1.5,
-  duration: 3,
-  ease: "power2.out",
-});
-
-gsap.to(".title", {
-  scrollTrigger: ".header",
-  // xPercent: 0,
+gsap.to(".phrases", {
+  scrollTrigger: ".phrases",
   opacity: 1,
-  delay: 1,
-  duration: 3,
+  duration: 1.5,
 });
