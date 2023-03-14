@@ -59,6 +59,9 @@ typewriter
   .deleteChars(6)
   .start();
 
+/**
+ * GSAP ANIMATIONS
+ */
 const tl = gsap.timeline();
 const border = document.querySelector(".border-t");
 
