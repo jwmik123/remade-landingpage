@@ -87,8 +87,7 @@ let mixer = null;
 
 gltfLoader.load("./websiteTestObject3.gltf", (gltf) => {
   gltf.scene.scale.set(1, 1, 1);
-  gltf.scene.position.x = 0;
-
+  gltf.scene.rotateX = Math.PI / 2;
   gltf.scene.traverse((model) => {
     if (model.isMesh) {
       console.log("model is mesh");
