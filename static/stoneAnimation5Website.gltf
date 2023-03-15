@@ -1,0 +1,219 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.7.33",
+        "version" : "2.0"
+    },
+    "extensionsUsed" : [
+        "KHR_draco_mesh_compression"
+    ],
+    "extensionsRequired" : [
+        "KHR_draco_mesh_compression"
+    ],
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Stone",
+            "rotation" : [
+                0.3126595914363861,
+                -0.1804259717464447,
+                0.2817942500114441,
+                0.8889783024787903
+            ],
+            "scale" : [
+                0.8682770133018494,
+                0.8682770133018494,
+                0.8682770729064941
+            ],
+            "translation" : [
+                0.025390714406967163,
+                -0.021662771701812744,
+                0
+            ]
+        }
+    ],
+    "animations" : [
+        {
+            "channels" : [
+                {
+                    "sampler" : 0,
+                    "target" : {
+                        "node" : 0,
+                        "path" : "rotation"
+                    }
+                },
+                {
+                    "sampler" : 1,
+                    "target" : {
+                        "node" : 0,
+                        "path" : "translation"
+                    }
+                },
+                {
+                    "sampler" : 2,
+                    "target" : {
+                        "node" : 0,
+                        "path" : "scale"
+                    }
+                }
+            ],
+            "name" : "fullAnimation",
+            "samplers" : [
+                {
+                    "input" : 3,
+                    "interpolation" : "LINEAR",
+                    "output" : 4
+                },
+                {
+                    "input" : 3,
+                    "interpolation" : "LINEAR",
+                    "output" : 5
+                },
+                {
+                    "input" : 6,
+                    "interpolation" : "LINEAR",
+                    "output" : 7
+                }
+            ]
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "rock.001",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1
+                    },
+                    "extensions" : {
+                        "KHR_draco_mesh_compression" : {
+                            "bufferView" : 0,
+                            "attributes" : {
+                                "POSITION" : 0,
+                                "NORMAL" : 1
+                            }
+                        }
+                    },
+                    "indices" : 2,
+                    "mode" : 4
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "componentType" : 5126,
+            "count" : 140,
+            "max" : [
+                0.6074122786521912,
+                0.8545181751251221,
+                0.988090991973877
+            ],
+            "min" : [
+                -0.6867708563804626,
+                -0.8821201324462891,
+                -0.8842248320579529
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 140,
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5123,
+            "count" : 528,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 8,
+            "max" : [
+                2.9583333333333335
+            ],
+            "min" : [
+                0.041666666666666664
+            ],
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 8,
+            "type" : "VEC4"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5126,
+            "count" : 8,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 2,
+            "max" : [
+                2.7916666666666665
+            ],
+            "min" : [
+                0.2916666666666667
+            ],
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 2,
+            "type" : "VEC3"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 1152,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 32,
+            "byteOffset" : 1152
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 128,
+            "byteOffset" : 1184
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 96,
+            "byteOffset" : 1312
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 8,
+            "byteOffset" : 1408
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 24,
+            "byteOffset" : 1416
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 1440,
+            "uri" : "data:application/octet-stream;base64,RFJBQ08CAgEBAAAAjAGwAQGwARwBVEcBN9+3fN/3L221f/ql1aeqtX7LwxePxtfFt+bRv+mjb78mVX1aX0rDt/jypR7Fox6tqiq+tFsorSr/AlVA/wLrVQL/AAAAAAABAAkDAAACAQEJAwABAwEBAQAPD3R0wQJpBn0FwQI1A2EB1QGtGKEOMJTBso2AcjHjH7QXjXzCl7ijWcXNurIEe5p5oqGy/M5U/Xl1ZfxdtrIxeQsJD5aPXjY0bfGzBA4suM+CGSTi/UrrK3kPDNxgSj3IWsEoHMBhDaW80wbKIFE7EeiRw6KBmvXnaCAncUMq+5wN14TFyQoSkmBc2Q3Z4/bdlOMCy/ojBw0QaDI/NlbPjoSVCi5gCpSezVJ9PWU/hVGgBYJuDxkVeNDueFMbI1l0AlXGLj1Lt82K4pZ/5SIBgodBwWxvQb/pMPMyojdvg9b9ATrugHivEn0pn/CvaFETrHDVT2y0VoYyG0JIrBNuNOLArUWxQTI5GBekShz9ZoBkesIjkEZtjACexucavr8HJYNjs6RcUu8seIcWWN5Rhrbt4YFofLd1SHaFXoOHK4drXv8og0MvPmKqDVSZ4TJoASxNiQGsI/l2MgBDSCmWwpTnsSy+wAokmXNEU94BSaVQFKdV39XWfSbgPrzsyECfwJDN94Gp+Jd4qehtBRMlbAgEZwIATdloBCCiPGUZXGRzZIpbEytgN4jpjegg65OPaIJubHonKQBHDFbiXNfg0uqQzVAWWmMxyAgxlbH+DwF7KbjkC3DjX/wDqrYFKB5V26Ct3liWgcbXRe3wIBdUD+WObOG2xxrr/yTkAqT1BAX9uUSsGMB01lvLHbDOMlTWaBKg+SKdBpHjRgRGHzPu0qa5AufBfZ6zulXqOukiRObmZZRTQV8diy7i6Fs3nhml10x5hjFuoqio1HN84GpTJiqjFgewzxDTUYFG44wBTNFCKgxsLxLqBdpla1hQhIVuDLfV1WE3qrjoOCnKHAmMnnTN8cdH41JsiZiqFmOwiM+WQN0AWwGyNiGMSDAAAAAA/z8AADfQL7+g0mG/j1xivwyo7z8OAAMBAAsDJQkHdMECfQXBAtUBSQJRJySsOfX/WrMkEu7h06xsOjz8wKHj89vwEm7fLp6jvcjio7ZWR4CA1wZ8ED/4PrwPgqIpVG+9CixIz/SDgKDGAODrAKk5nG+++dVwP/eTmy/G7O+n/gH1rYuhPAf3dkP3iQo9nW7DMaxjcHnrOrCWeP6+5e4/kb/iOPzNOv+Pg034ff/utgs5yw+AexzuI+E9/gLITyF8PADXI4EztkOvB/8nMK59D+6Xz8cEvA8i/AGl548OoNM/BCZuI3B/D8Wjrvvrg/cZFWx7sTx3GephcD+B7sR70LYPJEwfxeXa0NC8yiBgn0O/4J/BBs7fLwHBy9gVz6cx5t/Fv+wcfBNcunk5QpTwMs7kjup8vo4At/NuBADbkwA96o1wpf38U0ZegSl8PsJUTuG/8VGkvwXdZAKol7o8av2zBfMA/wMAAP8BAAAKq6oqPauq6j4AAGA/VVWlP6uq2j8AAAhAq6oiQFVVPUDrFKA+lsE4vlZHkD4WlGM/GqCtPhbIur1IUX8+qwpnP1LRyT4ysCE+XSgXPlasZD9gUNE+USSGPlgkzT1RUl4/8iDXPgQR5z6OX248L4FJP6EBwT7qxlc/PTpCvjnyqj7/Z4O+GuBfv9wKsj6VW2E+fmlZvpMVVr9tasE+wgOsPjAA0DwgdrG8AAAAgNSWkT4RoOQ9TmenvcQ0DUCj64w/QDswv4BeYUAgkOM/KT+Nv6wiT0D6MtA/yatvv3DOfD9CYN0+WrnEPjC7jr/AIC+/2jLPP17Oo79UgkW/hpLbP1VVlT6rqjJAZ0deP2dHXj9oR14/Z0deP2dHXj9oR14/"
+        }
+    ]
+}

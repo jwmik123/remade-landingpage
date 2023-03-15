@@ -85,7 +85,7 @@ gltfLoader.setDRACOLoader(dracoLoader);
 
 let mixer = null;
 
-gltfLoader.load("./websiteTestObject3.gltf", (gltf) => {
+gltfLoader.load("./stoneAnimation5Website.gltf", (gltf) => {
   gltf.scene.scale.set(1, 1, 1);
   gltf.scene.rotateX = Math.PI / 2;
   gltf.scene.traverse((model) => {
@@ -95,26 +95,29 @@ gltfLoader.load("./websiteTestObject3.gltf", (gltf) => {
       model.material = diamondMaterial;
     }
   });
-  scene.add(gltf.scene);
 
   // Animation
   mixer = new THREE.AnimationMixer(gltf.scene);
-  const action = mixer.clipAction(gltf.animations[1]);
 
-  window.addEventListener("scroll", () => {
-    // Calculate the scroll progress as a value between 0 and 1
-    const scrollProgress =
-      window.scrollY / (document.body.clientHeight - window.innerHeight);
+  gltf.animations.forEach((clip) => {
+    const action = mixer.clipAction(clip);
 
-    // Set the time position of the animation based on the scroll progress
-    const duration = action.getClip().duration;
-    const time = scrollProgress * duration;
-    action.time = time;
+    window.addEventListener("scroll", () => {
+      // Calculate the scroll progress as a value between 0 and 1
+      const scrollProgress =
+        window.scrollY / (document.body.clientHeight - window.innerHeight);
 
-    action.play();
-    // Update the animation mixer
-    mixer.update(0);
+      // Set the time position of the animation based on the scroll progress
+      const duration = action.getClip().duration;
+      const time = scrollProgress * duration;
+      action.time = time;
+
+      action.play();
+      // Update the animation mixer
+      mixer.update(0);
+    });
   });
+  scene.add(gltf.scene);
 });
 
 /**
