@@ -48,6 +48,7 @@ const border = document.querySelector(".border-t");
 
 gsap.set(border, { width: 0 });
 gsap.set("nav", { yPercent: -70 });
+gsap.set(".h1-title", { yPercent: 100 });
 
 tl.to(border, {
   scrollTrigger: ".header",
@@ -55,9 +56,11 @@ tl.to(border, {
   duration: 1.5,
   ease: "power2.out",
 });
-tl.to(".title", {
+tl.to(".h1-title", {
   scrollTrigger: ".header",
   opacity: 1,
+  yPercent: 0,
+  stagger: 0.2,
   duration: 1,
 });
 

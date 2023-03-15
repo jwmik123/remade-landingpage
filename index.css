@@ -23,8 +23,11 @@
   opacity: 0;
 }
 
-.title {
+.h1-title {
   opacity: 0;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
 }
 
 .big-footer-text {
