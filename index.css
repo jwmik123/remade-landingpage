@@ -28,7 +28,7 @@
 }
 
 .big-footer-text {
-  font-size: clamp(4rem, 15vw, 13rem);
+  font-size: clamp(4rem, 15vw, 16rem);
 }
 
 #services .active {

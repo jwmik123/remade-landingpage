@@ -9,7 +9,6 @@ import particlesFragmentShader from "./src/shaders/particles/fragment.glsl";
 
 import diamondVertexShader from "./src/shaders/diamond/vertex.glsl";
 import diamondFragmentShader from "./src/shaders/diamond/fragment.glsl";
-import { lerp } from "three/src/math/MathUtils";
 /**
  * Base
  */
@@ -143,18 +142,6 @@ gltfLoader.load("./stoneAnimation7Website.gltf", (gltf) => {
 });
 
 /**
- * Floor
- */
-const floor = new THREE.Mesh(
-  new THREE.PlaneGeometry(10, 10),
-  new THREE.MeshStandardMaterial({
-    color: "#444444",
-    metalness: 0,
-    roughness: 0.5,
-  })
-);
-
-/**
  * Lights
  */
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
@@ -212,11 +199,6 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(0, 0, 2);
 scene.add(camera);
 
-// Controls
-// const controls = new OrbitControls(camera, canvas);
-// controls.target.set(0, 0.75, 0);
-// controls.enableDamping = true;
-
 /**
  * Renderer
  */
@@ -225,5 +207,6 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.setClearColor(0x18181a, 1);
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
