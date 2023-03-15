@@ -9,6 +9,7 @@ import particlesFragmentShader from "./src/shaders/particles/fragment.glsl";
 
 import diamondVertexShader from "./src/shaders/diamond/vertex.glsl";
 import diamondFragmentShader from "./src/shaders/diamond/fragment.glsl";
+import { lerp } from "three/src/math/MathUtils";
 /**
  * Base
  */
@@ -25,7 +26,7 @@ const scene = new THREE.Scene();
  * Particles
  */
 const particlesGeometry = new THREE.BufferGeometry();
-const particleCount = 30;
+const particleCount = 40;
 const height = 4;
 const scaleArray = new Float32Array(particleCount);
 const positions = new Float32Array(particleCount * 3);
@@ -85,13 +86,12 @@ gltfLoader.setDRACOLoader(dracoLoader);
 
 let mixer = null;
 
-gltfLoader.load("./diamond.gltf", (gltf) => {
+gltfLoader.load("./stoneAnimation7Website.gltf", (gltf) => {
   gltf.scene.scale.set(1, 1, 1);
   gltf.scene.rotateX = Math.PI / 2;
   gltf.scene.traverse((model) => {
     if (model.isMesh) {
       console.log("model is mesh");
-      // model.material = new THREE.MeshNormalMaterial();
       model.material = diamondMaterial;
     }
   });
@@ -103,20 +103,42 @@ gltfLoader.load("./diamond.gltf", (gltf) => {
     const action = mixer.clipAction(clip);
 
     window.addEventListener("scroll", () => {
-      // Calculate the scroll progress as a value between 0 and 1
       const scrollProgress =
         window.scrollY / (document.body.clientHeight - window.innerHeight);
-
-      // Set the time position of the animation based on the scroll progress
       const duration = action.getClip().duration;
       const time = scrollProgress * duration;
       action.time = time;
-
       action.play();
-      // Update the animation mixer
+
       mixer.update(0);
     });
   });
+
+  /**
+   * Animate
+   */
+  const clock = new THREE.Clock();
+  let previousTime = 0;
+
+  const tick = () => {
+    const elapsedTime = clock.getElapsedTime();
+    const deltaTime = elapsedTime - previousTime;
+    previousTime = elapsedTime;
+
+    gltf.scene.position.y = 0.1 * Math.sin(elapsedTime);
+
+    // Update particles material
+    particlesMaterial.uniforms.uTime.value = elapsedTime;
+
+    diamondMaterial.uniforms.uTime.value = elapsedTime;
+
+    // Render
+    renderer.render(scene, camera);
+
+    // Call tick again on the next frame
+    window.requestAnimationFrame(tick);
+  };
+  tick();
   scene.add(gltf.scene);
 });
 
@@ -131,10 +153,6 @@ const floor = new THREE.Mesh(
     roughness: 0.5,
   })
 );
-floor.receiveShadow = true;
-floor.rotation.x = -Math.PI * 0.5;
-floor.position.z = 0;
-// scene.add(floor);
 
 /**
  * Lights
@@ -152,14 +170,6 @@ directionalLight.shadow.camera.right = 7;
 directionalLight.shadow.camera.bottom = -7;
 directionalLight.position.set(-5, 5, 0);
 scene.add(directionalLight);
-
-const spotLight = new THREE.SpotLight(0xff00000, 1);
-spotLight.position.y = 1;
-spotLight.position.x = 1;
-spotLight.lookAt(0, 0, 0);
-scene.add(spotLight);
-// const spotLightHelper = new THREE.SpotLightHelper(spotLight);
-// scene.add(spotLightHelper);
 
 /**
  * Sizes
@@ -217,28 +227,3 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-/**
- * Animate
- */
-const clock = new THREE.Clock();
-let previousTime = 0;
-
-const tick = () => {
-  const elapsedTime = clock.getElapsedTime();
-  const deltaTime = elapsedTime - previousTime;
-  previousTime = elapsedTime;
-
-  // Update particles material
-  particlesMaterial.uniforms.uTime.value = elapsedTime;
-
-  diamondMaterial.uniforms.uTime.value = elapsedTime;
-
-  // Render
-  renderer.render(scene, camera);
-
-  // Call tick again on the next frame
-  window.requestAnimationFrame(tick);
-};
-
-tick();
