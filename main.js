@@ -48,13 +48,13 @@ const typewriter = new Typewriter(typewriterID, {
 //Easter eggie, call me Maggy
 
 typewriter
-  .typeString("Remaking")
+  .typeString("REMAKING")
   .pauseFor(1500)
   .deleteChars(8)
-  .typeString("Reviving")
+  .typeString("REVIVING")
   .pauseFor(1500)
   .deleteChars(8)
-  .typeString("Remade")
+  .typeString("ReMaDe")
   .pauseFor(3500)
   .deleteChars(6)
   .start();
@@ -94,7 +94,7 @@ tl.to("nav", {
 });
 
 gsap.to(".phrases", {
-  scrollTrigger: ".phrases",
+  scrollTrigger: ".services",
   opacity: 1,
   duration: 1.5,
 });
