@@ -85,7 +85,7 @@ gltfLoader.setDRACOLoader(dracoLoader);
 
 let mixer = null;
 
-gltfLoader.load("./stoneAnimation5Website.gltf", (gltf) => {
+gltfLoader.load("./diamond.gltf", (gltf) => {
   gltf.scene.scale.set(1, 1, 1);
   gltf.scene.rotateX = Math.PI / 2;
   gltf.scene.traverse((model) => {

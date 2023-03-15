@@ -20,25 +20,6 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-// const container = document.getElementById("phrases");
-// const phrases = container.getElementsByTagName("p");
-
-// for (let i = 0; i < phrases.length; i++) {
-//   window.addEventListener("scroll", function () {
-//     const middleOfScreen = window.innerHeight / 1.2;
-//     const middleOfPhrase =
-//       phrases[i].getBoundingClientRect().top + phrases[i].offsetHeight / 2;
-
-//     if (middleOfPhrase >= middleOfScreen) {
-//       phrases[i].style.opacity = 0;
-//       phrases[i].style.top = -1 + "rem";
-//     } else {
-//       phrases[i].style.opacity = 1;
-//       phrases[i].style.top = 0;
-//     }
-//   });
-// }
-
 const typewriterID = document.getElementById("typewriter");
 const typewriter = new Typewriter(typewriterID, {
   loop: true,
@@ -86,15 +67,15 @@ tl.to(".small-text", {
   duration: 1,
 });
 
-tl.to("nav", {
+gsap.to("nav", {
   scrollTrigger: ".header",
-  // delay: 2,
   yPercent: 0,
+  delay: 1,
   duration: 1,
 });
 
 gsap.to(".phrases", {
-  scrollTrigger: ".services",
+  scrollTrigger: "#services",
   opacity: 1,
   duration: 1.5,
 });
