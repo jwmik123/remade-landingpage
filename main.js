@@ -35,7 +35,7 @@ typewriter
   .typeString("REVIVING")
   .pauseFor(1500)
   .deleteChars(8)
-  .typeString("ReMaDe")
+  .typeString("REMADE")
   .pauseFor(3500)
   .deleteChars(6)
   .start();
@@ -60,7 +60,7 @@ tl.to(".h1-title", {
   scrollTrigger: ".header",
   opacity: 1,
   yPercent: 0,
-  stagger: 0.2,
+  stagger: 0.1,
   duration: 1,
 });
 

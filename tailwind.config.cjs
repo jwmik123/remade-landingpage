@@ -10,7 +10,11 @@ module.exports = {
     container: {
       center: true,
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        gradient: "url('./gradient.png')",
+      },
+    },
   },
   plugins: [],
 };
