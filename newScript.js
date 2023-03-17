@@ -4,11 +4,18 @@ import * as dat from "lil-gui";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { ShaderPass } from "three/addons/postprocessing/ShaderPass.js";
+
 import particlesVertexShader from "./src/shaders/particles/vertex.glsl";
 import particlesFragmentShader from "./src/shaders/particles/fragment.glsl";
 
 import diamondVertexShader from "./src/shaders/diamond/vertex.glsl";
 import diamondFragmentShader from "./src/shaders/diamond/fragment.glsl";
+
+import noiseVertexShader from "./src/shaders/noise/vertex.glsl";
+import noiseFragmentShader from "./src/shaders/noise/fragment.glsl";
 /**
  * Base
  */
@@ -210,3 +217,30 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setClearColor(0x18181a, 1);
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+/*
+  Post Processing
+*/
+const composer = new EffectComposer(renderer);
+const renderPass = new RenderPass(scene, camera);
+const noisePass = new ShaderPass({
+  uniforms: {
+    uTime: { value: 0 },
+    uAmount: { value: 0.1 },
+  },
+  vertexShader: noiseVertexShader,
+  fragmentShader: noiseFragmentShader,
+});
+
+composer.addPass(renderPass);
+composer.addPass(noisePass);
+
+const tick = () => {
+  noisePass.uniforms.uTime.value += 0.01;
+
+  composer.render();
+
+  // Call tick again on the next frame
+  window.requestAnimationFrame(tick);
+};
+tick();

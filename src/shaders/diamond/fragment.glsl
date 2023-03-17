@@ -48,13 +48,13 @@ void main() {
     float n = noise(vPosition + uTime);
 
     // Random
-    // vec3 accent = vec3(77./255.,69./255.,93./255.);
-    // vec3 color2 = vec3(245./255.,233./255.,207./255.);
-    // vec3 color1 = vec3(125./255.,185./255.,182./255.);
+    vec3 accent = vec3(77./255.,69./255.,93./255.);
+    vec3 color2 = vec3(245./255.,233./255.,207./255.);
+    vec3 color1 = vec3(125./255.,185./255.,182./255.);
 
-    vec3 accent = vec3(14./255.,165./255.,233./255.);
-    vec3 color2 = vec3(217./255.,70./255.,239./255.);
-    vec3 color1 = vec3(14./255.,165./255.,233./255.);
+    // vec3 accent = vec3(14./255.,165./255.,233./255.);
+    // vec3 color2 = vec3(217./255.,70./255.,239./255.);
+    // vec3 color1 = vec3(14./255.,165./255.,233./255.);
 
     // Pattern creation
     vec2 baseUV = rotate2D(n)*vPosition.xy*0.2;

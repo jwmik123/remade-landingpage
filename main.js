@@ -23,21 +23,19 @@ requestAnimationFrame(raf);
 const typewriterID = document.getElementById("typewriter");
 const typewriter = new Typewriter(typewriterID, {
   loop: true,
-  delay: 150,
+  delay: 250,
 });
-
-//Easter eggie, call me Maggy
 
 typewriter
   .typeString("REMAKING")
   .pauseFor(1500)
-  .deleteChars(8)
-  .typeString("REVIVING")
-  .pauseFor(1500)
-  .deleteChars(8)
-  .typeString("REMADE")
-  .pauseFor(3500)
   .deleteChars(6)
+  .typeString("VIVING")
+  .pauseFor(1500)
+  .deleteChars(6)
+  .typeString("MADE")
+  .pauseFor(3500)
+  .deleteChars(4)
   .start();
 
 /**
