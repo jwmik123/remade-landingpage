@@ -2,6 +2,9 @@ import Lenis from "@studio-freight/lenis";
 // import ScrollyVideo from "scrolly-video";
 import Typewriter from "typewriter-effect/dist/core";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/src/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const lenis = new Lenis({
   duration: 1.1,
@@ -26,6 +29,8 @@ const typewriter = new Typewriter(typewriterID, {
   delay: 250,
 });
 
+console.log("mystring"[0]);
+
 typewriter
   .typeString("REMAKING")
   .pauseFor(1500)
@@ -49,13 +54,11 @@ gsap.set("nav", { yPercent: -70 });
 gsap.set(".h1-title", { yPercent: 100 });
 
 tl.to(border, {
-  scrollTrigger: ".header",
   width: "100%",
   duration: 1.5,
   ease: "power2.out",
 });
 tl.to(".h1-title", {
-  scrollTrigger: ".header",
   opacity: 1,
   yPercent: 0,
   stagger: 0.1,
@@ -63,20 +66,17 @@ tl.to(".h1-title", {
 });
 
 tl.to(".small-text", {
-  scrollTrigger: ".header",
   opacity: 1,
   duration: 1,
 });
 
-gsap.to("nav", {
-  scrollTrigger: ".header",
+tl.to("nav", {
   yPercent: 0,
-  delay: 1,
   duration: 1,
 });
 
 gsap.to(".phrases", {
-  scrollTrigger: "#services",
+  scrollTrigger: ".phrases",
   opacity: 1,
-  duration: 1.5,
+  duration: 0.7,
 });
