@@ -6,7 +6,7 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 
 import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
-import { GlitchPass } from "three/addons/postprocessing/GlitchPass.js";
+import { BloomPass } from "three/addons/postprocessing/BloomPass.js";
 
 import particlesVertexShader from "./src/shaders/particles/vertex.glsl";
 import particlesFragmentShader from "./src/shaders/particles/fragment.glsl";
@@ -103,22 +103,22 @@ const bgGeometry = new THREE.PlaneGeometry(20, 15);
 const bgMaterial = diamondMaterial;
 const bgMesh = new THREE.Mesh(bgGeometry, bgMaterial);
 bgMesh.position.set(0, 0, -1);
-scene.add(bgMesh);
+// scene.add(bgMesh);
 
 const hdr = new RGBELoader().load("./public/klopp.hdr", () => {
   hdr.mapping = THREE.EquirectangularReflectionMapping;
   hdr.needsUpdate = true;
 });
-// const material = new THREE.MeshPhysicalMaterial({
-//   envMap: bgTexture,
-//   envMapIntensity: 1,
-//   clearcoat: 1,
-//   clearcoatNormalMap: clearcoatNormal,
-//   roughness: 0.15,
-//   metalness: 0.2,
-//   transmission: 1,
-//   thickness: 5,
-// });
+const material = new THREE.MeshPhysicalMaterial({
+  // envMap: hdr,
+  envMapIntensity: 1,
+  clearcoat: 1,
+  clearcoatNormalMap: clearcoatNormal,
+  roughness: 0.15,
+  transmission: 1,
+  thickness: 3,
+  emissive: 0.2,
+});
 
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath("./draco/");
@@ -252,11 +252,11 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 const composer = new EffectComposer(renderer);
 
-// const renderPass = new RenderPass(scene, camera);
-// composer.addPass(renderPass);
+const renderPass = new RenderPass(scene, camera);
+composer.addPass(renderPass);
 
-// const glitchPass = new GlitchPass();
-// composer.addPass(glitchPass);
+const glitchPass = new BloomPass();
+composer.addPass(glitchPass);
 /*
   Post Processing
 */
