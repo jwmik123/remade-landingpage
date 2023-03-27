@@ -1,12 +1,11 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import * as dat from "lil-gui";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 
 import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
-import { BloomPass } from "three/addons/postprocessing/BloomPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass";
 
 import particlesVertexShader from "./src/shaders/particles/vertex.glsl";
 import particlesFragmentShader from "./src/shaders/particles/fragment.glsl";
@@ -17,15 +16,11 @@ import diamondFragmentShader from "./src/shaders/diamond/fragment.glsl";
 import diamondVertexShader1 from "./src/shaders/refraction/vertex.glsl";
 import diamondFragmentShader1 from "./src/shaders/refraction/fragment.glsl";
 
-import RefractionMaterial from "./src/shaders/refraction";
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
-
-import gsap from "gsap";
 /**
  * Base
  */
 // Debug
-// const gui = new dat.GUI();
+const gui = new dat.GUI();
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -72,16 +67,12 @@ const particlesMaterial = new THREE.ShaderMaterial({
   blending: THREE.AdditiveBlending,
   depthWrite: false,
 });
-
 const particles = new THREE.Points(particlesGeometry, particlesMaterial);
 scene.add(particles);
 
 /**
  * Models
  */
-const textureLoader = new THREE.TextureLoader();
-const roughNormal = textureLoader.load("./public/water.jpg");
-const clearcoatNormal = textureLoader.load("./public/clearcoat.png");
 const diamondMaterial = new THREE.ShaderMaterial({
   uniforms: {
     uTime: { value: 0 },
@@ -98,36 +89,22 @@ const diamondMaterial1 = new THREE.ShaderMaterial({
   fragmentShader: diamondFragmentShader1,
 });
 
-const bgTexture = textureLoader.load("./public/nebula.png");
 const bgGeometry = new THREE.PlaneGeometry(20, 15);
 const bgMaterial = diamondMaterial;
 const bgMesh = new THREE.Mesh(bgGeometry, bgMaterial);
 bgMesh.position.set(0, 0, -1);
-// scene.add(bgMesh);
+scene.add(bgMesh);
 
-const hdr = new RGBELoader().load("./public/klopp.hdr", () => {
-  hdr.mapping = THREE.EquirectangularReflectionMapping;
-  hdr.needsUpdate = true;
-});
-const material = new THREE.MeshPhysicalMaterial({
-  // envMap: hdr,
-  envMapIntensity: 1,
-  clearcoat: 1,
-  clearcoatNormalMap: clearcoatNormal,
-  roughness: 0.15,
-  transmission: 1,
-  thickness: 3,
-  emissive: 0.2,
+const material = new THREE.MeshStandardMaterial({
+  color: "#0000ff",
 });
 
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath("./draco/");
-
 const gltfLoader = new GLTFLoader();
 gltfLoader.setDRACOLoader(dracoLoader);
 
 let mixer = null;
-
 gltfLoader.load("./stoneAnimation7Website.gltf", (gltf) => {
   gltf.scene.scale.set(1, 1, 1);
   gltf.scene.rotateX = Math.PI / 2;
@@ -175,7 +152,6 @@ gltfLoader.load("./stoneAnimation7Website.gltf", (gltf) => {
     diamondMaterial1.uniforms.uTime.value = elapsedTime;
 
     // Render
-
     renderer.render(scene, camera);
 
     // Call tick again on the next frame
@@ -188,11 +164,21 @@ gltfLoader.load("./stoneAnimation7Website.gltf", (gltf) => {
 /**
  * Lights
  */
-const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
 scene.add(ambientLight);
 
-// const dir = new THREE.DirectionalLight(0xffffff, 1);
-// scene.add(dir);
+// Create a red spotlight
+const spotlight = new THREE.SpotLight(0xff0000, 2);
+spotlight.position.set(2, 2, 0);
+spotlight.lookAt(0, 0, 0);
+spotlight.angle = Math.PI / 6;
+spotlight.penumbra = 0.05;
+spotlight.decay = 2;
+spotlight.distance = 200;
+// scene.add(spotlight);
+
+const spotLightHelper = new THREE.SpotLightHelper(spotlight);
+// scene.add(spotLightHelper);
 
 /**
  * Sizes
@@ -238,7 +224,6 @@ scene.add(camera);
 /**
  * Renderer
  */
-
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
 });
@@ -250,29 +235,21 @@ renderer.setClearColor(0x18181a, 1);
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
+/*
+  Post Processing
+*/
 const composer = new EffectComposer(renderer);
 
 const renderPass = new RenderPass(scene, camera);
 composer.addPass(renderPass);
 
-const glitchPass = new BloomPass();
-composer.addPass(glitchPass);
-/*
-  Post Processing
-*/
-// const composer = new EffectComposer(renderer);
-// const renderPass = new RenderPass(scene, camera);
-// const noisePass = new ShaderPass({
-//   uniforms: {
-//     uTime: { value: 0 },
-//     uAmount: { value: 0.1 },
-//   },
-//   vertexShader: noiseVertexShader,
-//   fragmentShader: noiseFragmentShader,
-// });
-
-// composer.addPass(renderPass);
-// composer.addPass(noisePass);
+const bloomPass = new UnrealBloomPass(
+  new THREE.Vector2(sizes.width, sizes.height),
+  0.7,
+  0.3,
+  0
+);
+composer.addPass(bloomPass);
 
 const tick = () => {
   // noisePass.uniforms.uTime.value += 0.01;
