@@ -20,7 +20,7 @@ import diamondFragmentShader1 from "./src/shaders/refraction/fragment.glsl";
  * Base
  */
 // Debug
-const gui = new dat.GUI();
+// const gui = new dat.GUI();
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
